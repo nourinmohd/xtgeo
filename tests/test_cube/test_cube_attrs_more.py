@@ -1,3 +1,5 @@
+from typing import Any
+
 import pytest
 
 import xtgeo
@@ -6,7 +8,7 @@ from xtgeo.common.log import functimer
 
 
 @pytest.mark.bigtest
-def test_large_cube_memory_usage():
+def test_large_cube_memory_usage() -> None:
     """Get attribute around a constant cube slices and check peak memory."""
     import gc
 
@@ -20,7 +22,7 @@ def test_large_cube_memory_usage():
 
     @measure_peak_memory_usage
     @functimer(output="print")
-    def compute_with_mem_tracking(cube, interp):
+    def compute_with_mem_tracking(cube: Any, interp: Any) -> Any:
         """Helper function to be decorated."""
         return cube.compute_attributes_in_window(
             level1,
